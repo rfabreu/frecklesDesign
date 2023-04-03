@@ -8,7 +8,7 @@ function LandingPage() {
     return (
         <div className='App'>
             <h4 className='header'><strong>CARLA ANTUNES</strong> / Freckles Design</h4>
-            <video className='video' src={News} autoPlay loop muted controls={false} />
+            <video className='video' src={News} autoPlay loop muted playsInline controls={false} />
             <div className='content'>
                 <h1 className='main-heading'>We'll be celebrating the<br />
                     launch of our new site soon.</h1>
