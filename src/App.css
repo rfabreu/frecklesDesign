@@ -44,7 +44,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 40%;
   width: 100%;
 }
 
@@ -145,7 +145,7 @@ footer {
 
   .content {
     position: relative;
-    margin-bottom: 130px;
+    margin-bottom: 5%;
     top: 0;
     left: 0;
     transform: none;
@@ -155,7 +155,7 @@ footer {
   }
 
   .buttons {
-    margin-top: 30px;
+    margin-top: 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
