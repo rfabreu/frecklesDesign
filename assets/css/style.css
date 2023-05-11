@@ -1,0 +1,142 @@
+/* Header Styles */
+header {
+    color: azure;
+}
+
+header:hover {
+    color: lightgray;
+    cursor: pointer;
+}
+
+/* Carousel Styles */
+html,
+body,
+.stage,
+.ring,
+.img {
+    width: 100% !important;
+    height: 100% !important;
+    transform-style: preserve-3d !important;
+    user-select: none !important;
+    font-family: 'Roboto' !important;
+}
+
+html,
+body,
+.stage {
+    overflow: hidden !important;
+    background: #000 !important;
+}
+
+/* div, article,
+svg {
+    position: absolute;
+} */
+
+div, article {
+    position: absolute !important;
+}
+
+.container {
+    perspective: 2000px !important;
+    width: 300px !important;
+    height: 400px !important;
+    left: 50% !important;
+    top: 45% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+
+/* Buttons Styles */
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 80px;
+    width: 100%;
+  }
+  
+  .btn {
+    color: white;
+    border-color: white;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20%;
+    padding-right: 20%;
+    white-space: nowrap;
+    border: none;
+  }
+  
+  .btn-icon {
+    margin-right: 60px;
+    transform: translate(-50%);
+  }
+  
+  .btn:hover {
+    color: black;
+    background-color: white;
+  }
+
+/* Footer Styles */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 14px;
+    background-color: #000;
+    color: azure;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+  }
+
+  .left-icons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5%;
+  }
+  
+  .icon {
+    color: azure;
+    transition: all 0.2s ease-in-out;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  .icon:hover {
+    color: #666;
+    transform: scale(1.2);
+  }
+
+  .center {
+    flex: 1;
+    text-align: center;
+    margin-left: 40%;
+  }
+  
+  .copy {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .right{
+    text-align: right;
+    margin-left: 80%;
+  }
+  
+  .right a {
+    display: flex;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+  }
+
+  .right a:hover {
+    text-decoration: underline;
+    color: azure;
+  }
