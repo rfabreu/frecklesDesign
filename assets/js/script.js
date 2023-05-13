@@ -38,7 +38,7 @@ gsap
         z: -500,
         backgroundImage: (i) =>
             // "url(https://picsum.photos/id/" + (i + 32) + "/600/400/)",
-            `url(/assets/images/${getImageName(i)})`,
+            `url(../assets/images/${getImageName(i)})`,
         backgroundPosition: (i) => getBgPos(i),
         backfaceVisibility: "hidden",
         // backgroundSize: "100% 100%",
