@@ -4,21 +4,28 @@
 //https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js
 
 
+
 function getImageName(i) {
+    console.log('getImageName called with index:', i);
     const images = [
-      'acores.png',
-      'andorinha.png',
-      'fernando.png',
-      'market.png',
-      'lisbon.png',
-      'nazare.png',
-      'immigrants.png',
-      'sardinhas.png',
-      'sobreiro.png',
-      'fado.png'
+        'id_0.png',
+        'id_1.png',
+        'id_2.png',
+        'id_3.png',
+        'id_4.png',
+        'id_5.png',
+        'id_6.png',
+        'id_7.png',
+        'id_8.png',
+        'id_9.png',
+        'id_10.png',
+        'id_11.png'
     ];
-    return images[i];
-  }  
+    const imageName = images[i];
+    console.log('Returning image name:', imageName);
+    // return images[i];
+    return imageName;
+}
 
 let xPos = 0;
 gsap
@@ -34,9 +41,14 @@ gsap
             `url(/assets/images/${getImageName(i)})`,
         backgroundPosition: (i) => getBgPos(i),
         backfaceVisibility: "hidden",
-        backgroundSize: "100% 100%",
-        objectFit: "cover"
+        // backgroundSize: "100% 100%",
+        backgroundSize: "600px 400px",
+        objectFit: "cover",
         // backgroundRepeat: "no-repeat"
+        onComplete: function () {
+            // set the title attribute of the img element
+            this.target.setAttribute("title", getImageName(this.index));
+        }
     })
     .from(".img", {
         duration: 1.5,
@@ -107,4 +119,60 @@ icons.forEach(icon => {
         icon.style.color = '#333';
         icon.style.transform = 'scale(1)';
     });
+});
+
+// const images = document.querySelectorAll('.img');
+
+// images.forEach(img => {
+//     let isExpanded = false;
+//     img.addEventListener('click', () => {
+//         if (!isExpanded) {
+//             gsap.to(img, {scale: 2});
+//             isExpanded = true;
+//         } else {
+//             gsap.to(img, {scale: 1});
+//             isExpanded = false;
+//         }
+//     });
+// });
+
+// $(".img").on("click", function() {
+//     const $this = $(this);
+//     if ($this.hasClass("full-size")) {
+//       // Image is already full size, so animate it back to original size
+//       gsap.to($this, { scale: 1, opacity: 1 });
+//       $this.removeClass("full-size");
+//     } else {
+//       // Image is not full size, so animate it to full size
+//       gsap.to($this, { scale: 1.5, opacity: 1 });
+//       $this.addClass("full-size");
+//     }
+//   });
+
+
+$(".img").on("click", function () {
+    var $this = $(this);
+    var $ring = $(".ring");
+    var isActive = $this.hasClass("active");
+
+    // If the image is already active, remove the active class and animate back to original size
+    if (isActive) {
+        $this.removeClass("active");
+        $ring.removeClass("ring-active");
+        gsap.to($this, { scale: 1, ease: "power2.inOut" });
+    } else {
+        // Otherwise, add the active class, animate to full size and show image title
+        $this.addClass("active");
+        $ring.addClass("ring-active");
+        gsap.to($this, { scale: 1.5, ease: "power2.inOut", width: "auto", height: "auto" });
+        $this.append("<div class='img-title'>" + $this.attr("title") + "</div>");
+    }
+});
+$(document).on("click", function (event) {
+    if (!$(event.target).closest(".img").length) {
+        $(".img").removeClass("active");
+        $(".ring").removeClass("ring-active");
+        gsap.to(".img", { scale: 1, ease: "power2.inOut" });
+        $(".img-title").remove();
+    }
 });
