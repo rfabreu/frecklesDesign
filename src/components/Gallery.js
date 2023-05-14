@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import {
-    MDBContainer,
+    // MDBContainer,
     MDBCol,
     MDBRow,
 } from 'mdb-react-ui-kit';
