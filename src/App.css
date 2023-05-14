@@ -72,7 +72,7 @@ body {
 
 /* footer styles */
 footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
   background-color: black;
   color: white;

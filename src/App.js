@@ -1,12 +1,14 @@
 import React from 'react';
-import LandingPage from './components/LandingPage';
+// import LandingPage from './components/LandingPage';
+import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 import './App.css';
 
 function App() {
   return (
     <main>
-      <LandingPage />
+      <Gallery />
+      {/* <LandingPage /> */}
       <Footer />
     </main>
   );
