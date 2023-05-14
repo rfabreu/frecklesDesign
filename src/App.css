@@ -32,14 +32,24 @@ body {
   padding: 2%;
 }
 
-img {
+.gallery-item img {
   display: block;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-img:hover {
+.gallery-item img:hover {
   filter: brightness(20%);
   cursor: pointer;
+}
+
+
+.gallery-item .img-description {
+  line-height: 20%;
+  transition: all 0.4s ease-in-out;
+}
+
+.gallery-item img:hover ~ .img-description {
+  color: azure;
 }
 
 img .overlay {
@@ -88,6 +98,10 @@ text-align: center;
 .img-isOpen:hover {
   filter: none;
 }
+
+
+
+/* LandingPage Styles */
 
 .video {
   position: absolute;
