@@ -6,15 +6,87 @@ body {
 
 .header {
   color: white;
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  margin: 10px;
+  background-color: black;
+  width: 100%;
+  height: 80px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding-top: 1.5%;
+  padding-left: 5%;
+  z-index: 9999;
 }
 
-.header:hover {
+.title {
+  max-width: fit-content;
+}
+
+.title:hover {
   color: gray;
   cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Gallery Styles */
+.img-gallery {
+  padding: 2%;
+}
+
+img {
+  display: block;
+  transition: all 0.2s ease-in-out;
+}
+
+img:hover {
+  filter: brightness(20%);
+  cursor: pointer;
+}
+
+img .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img:hover .overlay {
+  opacity: 1;
+}
+
+img .overlay p {
+  color: #fff;
+font-size: 1.5rem;
+text-align: center;
+}
+
+/* For IMG when modal isOpen */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.img-isOpen {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.img-isOpen:hover {
+  filter: none;
 }
 
 .video {
@@ -72,8 +144,9 @@ body {
 
 /* footer styles */
 footer {
-  position: fixed;
+  position: sticky;
   width: 100%;
+  height: auto;
   background-color: black;
   color: white;
   display: flex;
@@ -99,6 +172,8 @@ footer {
 
 .icon:hover {
   color: gray;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .center {
@@ -124,7 +199,8 @@ footer {
 
 .right a:hover {
   text-decoration: underline;
-  color: white;
+  color: gray;
+  transition: all 0.4s ease-in-out;
 }
 
 /* Media queries */
