@@ -130,24 +130,29 @@ text-align: center;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 80px;
-  width: 100%;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding-right: 10%;
+  padding-left: 5%;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  max-width: 100%;
 }
 
 .btn {
   color: white;
   border-color: white;
-  margin-right: 10px;
+  margin-right: 5%;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 10%;
+  padding-right: 10%;
   white-space: nowrap;
   border: none;
 }
 
 .btn-icon {
-  margin-right: 20px;
+  margin-right: 10%;
   transform: translate(-50%);
 }
 
@@ -245,7 +250,8 @@ footer {
   }
 
   .buttons {
-    margin-top: 30px;
+    top: 0;
+    margin-bottom: 25%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
