@@ -30,7 +30,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Fernando Pessoa</h3>
-                            <p>Poeta português (Portuguese Poet) - 36in X 36in</p>
+                            <p>Acrylic Painting - 36in x 36in</p>
                         </div>
                     </div>
 
@@ -38,12 +38,12 @@ export default function Gallery() {
                         <img
                             src='https://res.cloudinary.com/dchkpwyce/image/upload/v1684030193/acores_uei20r.png'
                             className='w-100 shadow-1-strong rounded mb-3'
-                            alt='Açores - ilhéu de Vila França. Acrylic technique, dimensions = 36in X 36in. Available for sale.'
+                            alt='Açores - ilhéu de Vila Franca. Acrylic technique, dimensions = 36in X 36in. Available for sale.'
                             onClick={handleImageClick}
                         />
                         <div className='img-description'>
-                            <h3>Açores - Ilhéu de Vila França</h3>
-                            <p>36in X 36in</p>
+                            <h3>Açores - Ilhéu de Vila Franca</h3>
+                            <p>Acrylic Paintingin - 24in x 30in</p>
                         </div>
                     </div>
                 </MDBCol>
@@ -58,7 +58,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Nazarena</h3>
-                            <p>Praia da Nazaré (Nazaré beach) - 30in X 48in</p>
+                            <p>Acrylic Painting - 30in x 48in <strong className='sold'>(SOLD)</strong></p>
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Andorinha</h3>
-                            <p>Swallow - 36in X 36in</p>
+                            <p>Acrylic Painting 36in x 36in</p>
                         </div>
                     </div>
                 </MDBCol>
@@ -86,7 +86,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Sobreiro do Alentejo</h3>
-                            <p>(Alentejo cork oak) - 36in X 36in</p>
+                            <p>Acrylic Painting 36in x 36in</p>
                         </div>
                     </div>
 
@@ -99,7 +99,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Elétrico de Lisboa</h3>
-                            <p>(Streetcar - Lisbon) - 30in X 48in</p>
+                            <p>Acrylic Painting- 30in x 48in <strong className='sold'>(SOLD)</strong></p>
                         </div>
                     </div>
                 </MDBCol>
@@ -114,7 +114,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Sardinhas</h3>
-                            <p>(Sardines) - 24in X 24in</p>
+                            <p>Acrylic Painting - 24in x 24in</p>
                         </div>
                     </div>
 
@@ -127,7 +127,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Noite de Fado</h3>
-                            <p>(Fado night) - 36in X 48in</p>
+                            <p>Acrylic Painting - 36in x 48in <strong className='sold'>(SOLD)</strong></p>
                         </div>
                     </div>
                 </MDBCol>
@@ -142,7 +142,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Emigração</h3>
-                            <p>(Portuguese emigration) - 30in X 36in</p>
+                            <p>Acrylic Painting - 30in x 36in</p>
                         </div>
                     </div>
 
@@ -155,7 +155,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Peixaria Portuguesa</h3>
-                            <p>(Portuguese fish market) - 36in X 36in</p>
+                            <p>Acrylic Painting - 36in x 36in</p>
                         </div>
                     </div>
                 </MDBCol>
@@ -170,7 +170,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Padrão dos Descobrimentos</h3>
-                            <p>(Monument of the discoveries) - 36in X 36in</p>
+                            <p>Acrylic Painting - 36in x 36in <strong className='sold'>(SOLD)</strong></p>
                         </div>
                     </div>
 
@@ -183,7 +183,7 @@ export default function Gallery() {
                         />
                         <div className='img-description'>
                             <h3>Revolução de 25 de Abril</h3>
-                            <p>(April 25 Revolution) - 36in X 48in</p>
+                            <p>Acrylic Painting - 36in x 48in</p>
                         </div>
                     </div>
                 </MDBCol>
