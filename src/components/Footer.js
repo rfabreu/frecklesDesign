@@ -17,7 +17,7 @@ function Footer() {
                 </a>
             </div>
             <div className='center'>
-                <span className='copy'>&copy; 2023 Freckles Design <br /> All rights reserved</span>
+                <span className='copy'>&copy; {new Date().getFullYear()} Freckles Design <br /> All rights reserved</span>
             </div>
             <div className='right'>
                 <a href='https://orangecatlabs.ca' target='_blank' rel='noopener noreferrer'>
