@@ -20,8 +20,8 @@ function Footer() {
                 <span className='copy'>&copy; 2023 Freckles Design <br /> All rights reserved</span>
             </div>
             <div className='right'>
-                <a href='https://www.linkedin.com/in/rafael-a-gomes/' target='_blank' rel='noopener noreferrer'>
-                    Developed by: Rafael Abreu
+                <a href='https://orangecatlabs.ca' target='_blank' rel='noopener noreferrer'>
+                    Developed by: OrangeCat Labs
                 </a>
             </div>
         </footer>
