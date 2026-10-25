@@ -21,7 +21,7 @@ export default function Gallery() {
     }
 
     return (
-        <div className='img-gallery'>
+        <section className='img-gallery' aria-label='Artwork Gallery'>
             <MDBRow>
                 {columns.map((colArtworks, colIndex) => (
                     <MDBCol
@@ -30,12 +30,13 @@ export default function Gallery() {
                         md={colIndex % 3 === 0 ? 12 : undefined}
                         className='mb-4 mb-lg-0'
                     >
-                        {colArtworks.map((art) => (
-                            <div key={art.id} className='gallery-item mb-5'>
+                        {colArtworks.map((art, itemIndex) => (
+                            <article key={art.id} className='gallery-item mb-5'>
                                 <img
                                     src={art.imageUrl}
                                     className='w-100 shadow-1-strong rounded mb-3'
                                     alt={art.alt}
+                                    loading={colIndex === 0 && itemIndex === 0 ? 'eager' : 'lazy'}
                                     onClick={handleImageClick}
                                 />
                                 <div className='img-description'>
@@ -45,7 +46,7 @@ export default function Gallery() {
                                         {art.sold && <strong className='sold'>(SOLD)</strong>}
                                     </p>
                                 </div>
-                            </div>
+                            </article>
                         ))}
                     </MDBCol>
                 ))}
@@ -58,10 +59,10 @@ export default function Gallery() {
                 <img
                     src={selectedImage}
                     className='img-isOpen'
-                    alt=''
+                    alt='Enlarged artwork view'
                     onClick={handleModalClose}
                 />
             </Modal>
-        </div>
+        </section>
     );
 }

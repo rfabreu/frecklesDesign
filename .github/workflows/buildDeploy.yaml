@@ -30,12 +30,15 @@ jobs:
       - name: Build Application
         run: npm run build
 
-      - name: Verify CNAME Preservation
+      - name: Verify CNAME and SEO/GEO Assets Preservation
         run: |
-          if [ ! -f "build/CNAME" ]; then
-            echo "Error: build/CNAME does not exist. Aborting to protect custom domain."
-            exit 1
-          fi
+          for file in CNAME sitemap.xml robots.txt llms.txt llms-full.txt; do
+            if [ ! -f "build/$file" ]; then
+              echo "Error: build/$file does not exist. Aborting to protect site integrity."
+              exit 1
+            fi
+          done
+          echo "All required domain, SEO, and LLM assets verified in build folder."
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
