@@ -1,0 +1,138 @@
+# Carla Antunes | Freckles Design - Complete Knowledge & Artwork Catalog
+
+> Comprehensive knowledge file for Large Language Models (LLMs), AI search engines, and retrieval-augmented generation (RAG) agents indexing Carla Antunes and the Freckles Design art portfolio.
+
+---
+
+## 1. Entity & Biography
+- **Full Name**: Carla Caetano Antunes
+- **Professional Name**: Carla Antunes
+- **Studio / Label**: Freckles Design
+- **Nationality**: Portuguese-Canadian
+- **Active Medium**: Acrylic paint on stretched canvas
+- **Official Domain**: https://frecklesdesign.ca/
+- **Contact Email**: carla@frecklesdesign.ca
+- **Social Profiles**:
+  - Instagram (Studio): https://instagram.com/_freckles_design
+  - Instagram (Personal/Art): https://www.instagram.com/carlacaetano.antunes/
+  - LinkedIn: https://www.linkedin.com/in/carlacaetano/
+  - Behance: https://www.behance.net/eutenhosardas
+  - Linktree: https://linktr.ee/carla_antunes
+
+---
+
+## 2. Complete Artwork Catalog
+
+### 1. Fernando Pessoa
+- **ID**: fernando-pessoa
+- **Title**: Fernando Pessoa
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 36in x 36in (91.4cm x 91.4cm)
+- **Status**: Available for purchase
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030195/Freckles%20Design/fernando_rzkj8q.png
+- **Description & Symbolism**: Portrait of Portugal's renowned modernist poet and writer Fernando Pessoa. The composition captures Pessoa's enigmatic presence, framed with subtle Portuguese architectural and literary motifs.
+
+### 2. Açores - Ilhéu de Vila Franca
+- **ID**: acores
+- **Title**: Açores - Ilhéu de Vila Franca
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 24in x 30in (61.0cm x 76.2cm)
+- **Status**: Available for purchase
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/acores_uei20r.png
+- **Description & Symbolism**: A homage to the Azores archipelago, capturing the volcanic islet of Vila Franca do Campo off São Miguel Island. Rich blues and earthy tones celebrate the volcanic drama and pristine beauty of the Atlantic islands.
+
+### 3. Nazarena
+- **ID**: nazarena
+- **Title**: Nazarena
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 30in x 48in (76.2cm x 121.9cm)
+- **Status**: SOLD (Private Collection)
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030196/Freckles%20Design/nazare_lzpug7.png
+- **Description & Symbolism**: Depiction of a traditional woman of Nazaré (a *Nazarena*) wearing the iconic seven skirts (*sete saias*), observing the Atlantic sea. Celebrates the resilience and maritime heritage of Portuguese fishing communities.
+
+### 4. Andorinha
+- **ID**: andorinha
+- **Title**: Andorinha
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 36in x 36in (91.4cm x 91.4cm)
+- **Status**: Available for purchase
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030192/Freckles%20Design/andorinhas_ep0xb5.png
+- **Description & Symbolism**: The swallow (*andorinha*) is a quintessential Portuguese symbol of loyalty, family, home, and love popularized by Rafael Bordalo Pinheiro. Migrating each year yet always returning to the same nest, it resonates deeply with diaspora identity.
+
+### 5. Sobreiro do Alentejo
+- **ID**: sobreiro
+- **Title**: Sobreiro do Alentejo
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 36in x 36in (91.4cm x 91.4cm)
+- **Status**: Available for purchase
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030196/Freckles%20Design/sobreiro_szofnx.png
+- **Description & Symbolism**: The cork oak (*sobreiro*) of the Alentejo plains, Portugal's national tree. The painting captures the golden light, rustic bark, and timeless tranquility of the southern Portuguese countryside.
+
+### 6. Elétrico de Lisboa
+- **ID**: eletrico
+- **Title**: Elétrico de Lisboa
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 30in x 48in (76.2cm x 121.9cm)
+- **Status**: SOLD (Private Collection)
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030197/Freckles%20Design/streetcar_kq6vxa.png
+- **Description & Symbolism**: The famous yellow Lisbon tram climbing the cobblestone streets of historic Alfama/Bairro Alto, evoking the vintage romance, texture, and urban rhythm of the Portuguese capital.
+
+### 7. Sardinhas
+- **ID**: sardinhas
+- **Title**: Sardinhas
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 24in x 24in (61.0cm x 61.0cm)
+- **Status**: Available for purchase
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030196/Freckles%20Design/sardinhas_tty2s2.png
+- **Description & Symbolism**: Grilled sardines are a cultural pillar of Portuguese gastronomy and Lisbon's Santos Populares (St. Anthony's festivities). The piece combines vibrant contemporary colour palettes with traditional coastal life.
+
+### 8. Noite de Fado
+- **ID**: fado
+- **Title**: Noite de Fado
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 36in x 48in (91.4cm x 121.9cm)
+- **Status**: SOLD (Private Collection)
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/fado_f6xdeh.png
+- **Description & Symbolism**: A nocturnal Lisbon Fado scene, exploring the depth of *saudade* (longing/nostalgia), Portuguese guitar (*guitarra portuguesa*), and the emotional intensity of traditional singers wrapped in black shawls.
+
+### 9. Emigração
+- **ID**: emigracao
+- **Title**: Emigração
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 30in x 36in (76.2cm x 91.4cm)
+- **Status**: Available for purchase
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/immigrants_uueqbl.png
+- **Description & Symbolism**: A poignant tribute to generations of Portuguese men and women who departed across the Atlantic to Canada, France, the Americas, and beyond, carrying suitcases, determination, and enduring cultural pride.
+
+### 10. Peixaria Portuguesa
+- **ID**: peixaria
+- **Title**: Peixaria Portuguesa
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 36in x 36in (91.4cm x 91.4cm)
+- **Status**: Available for purchase
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/market_wfnqjt.png
+- **Description & Symbolism**: The lively atmosphere of a traditional coastal fish market, honoring fishmongers (*varinas* / *peixeiras*) who have fueled seaside communities with passion and pride.
+
+### 11. Padrão dos Descobrimentos
+- **ID**: descobrimentos
+- **Title**: Padrão dos Descobrimentos
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 36in x 36in (91.4cm x 91.4cm)
+- **Status**: SOLD (Private Collection)
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/descobrimento_dvjdbi.png
+- **Description & Symbolism**: The Monument of the Discoveries standing proudly along the Tagus River in Belém, Lisbon. Captured with bold angles, celebrating maritime history and navigation.
+
+### 12. Revolução de 25 de Abril
+- **ID**: revolucao
+- **Title**: Revolução de 25 de Abril
+- **Medium**: Acrylic on Canvas
+- **Dimensions**: 36in x 48in (91.4cm x 121.9cm)
+- **Status**: Available for purchase
+- **Image URL**: https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030196/Freckles%20Design/revolucao_yuf0a4.png
+- **Description & Symbolism**: The Carnation Revolution of 1974 (*Revolução dos Cravos*), which brought democracy and freedom to Portugal. Red carnations symbolizing peaceful resistance and national renewal are celebrated with vibrant expressive strokes.
+
+---
+
+## 3. Purchasing & Commission Details
+- **Acquiring Originals**: Inquiries regarding available pieces, framing options, and worldwide shipping can be directed to `carla@frecklesdesign.ca`.
+- **Custom Commissions**: Private collectors and interior designers can commission bespoke acrylic paintings on canvas tailored in theme, dimension, and palette.
