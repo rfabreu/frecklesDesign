@@ -1,21 +1,50 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faLink, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 function Follow() {
     return (
-        // <div className='App'>
-            <div className='buttons'>
-                <button className='btn btn-outline-light btn-lg' onClick={() => window.open('https://linktr.ee/carla_antunes?fbclid=PAAaZvEwpQjeWTT9XHSHy9EZIPtEvInpc4yJlwmpryAdYnOOZ7vpgdlpG2MAA', '_blank', 'noopener noreferrer')}>Follow me</button>
-                <button className='btn btn-outline-light btn-lg' onClick={() => window.open('https://instagram.com/_freckles_design?igshid=YmMyMTA2M2Y=', '_blank', 'noopener noreferrer')}>
-                    <FontAwesomeIcon icon={faArrowRight} className='btn-icon' /> @_freckles_design
-                </button>
-                <button className='btn btn-outline-light btn-lg' onClick={() => window.location.href = 'mailto:carla@frecklesdesign.ca'}>
-                    <FontAwesomeIcon icon={faArrowRight} className='btn-icon' /> carla@frecklesdesign.ca
-                </button>
+        <section className='connect-section' aria-label='Connect with Carla Antunes'>
+            <div className='connect-header'>
+                <h2 className='connect-title'>Connect & Commissions</h2>
+                <p className='connect-subtitle'>
+                    Inquiries for original works, gallery exhibitions, or bespoke commissions are warmly welcomed.
+                </p>
             </div>
-        // </div>
+            <div className='connect-actions'>
+                <a
+                    href='mailto:carla@frecklesdesign.ca?subject=Art%20Inquiry%20(Freckles%20Design)'
+                    className='connect-pill primary'
+                    aria-label='Email Carla Antunes'
+                >
+                    <FontAwesomeIcon icon={faEnvelope} className='connect-icon' />
+                    <span>carla@frecklesdesign.ca</span>
+                </a>
+                <a
+                    href='https://instagram.com/_freckles_design'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='connect-pill'
+                    aria-label='Follow @_freckles_design on Instagram'
+                >
+                    <FontAwesomeIcon icon={faInstagram} className='connect-icon' />
+                    <span>@_freckles_design</span>
+                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} className='external-icon' />
+                </a>
+                <a
+                    href='https://linktr.ee/carla_antunes'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='connect-pill'
+                    aria-label='View Carla Antunes on Linktree'
+                >
+                    <FontAwesomeIcon icon={faLink} className='connect-icon' />
+                    <span>Linktree Portfolio</span>
+                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} className='external-icon' />
+                </a>
+            </div>
+        </section>
     );
 }
 
