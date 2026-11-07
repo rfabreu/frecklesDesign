@@ -64,3 +64,27 @@ test('opens enhanced lightbox with details and inquiry CTA on image click', () =
   fireEvent.click(closeBtn);
   expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 });
+
+test('renders artist tagline and connect section with action links', () => {
+  render(<App />);
+
+  // Tagline check
+  expect(screen.getByText(/Portuguese Heritage/i)).toBeInTheDocument();
+
+  // Connect section check
+  const connectSection = screen.getByRole('region', { name: /Connect with Carla Antunes/i });
+  expect(connectSection).toBeInTheDocument();
+
+  expect(screen.getByRole('link', { name: /Email Carla Antunes/i })).toHaveAttribute(
+    'href',
+    expect.stringContaining('mailto:carla@frecklesdesign.ca')
+  );
+  expect(screen.getByRole('link', { name: /Follow @_freckles_design on Instagram/i })).toHaveAttribute(
+    'href',
+    'https://instagram.com/_freckles_design'
+  );
+  expect(screen.getByRole('link', { name: /View Carla Antunes on Linktree/i })).toHaveAttribute(
+    'href',
+    'https://linktr.ee/carla_antunes'
+  );
+});
