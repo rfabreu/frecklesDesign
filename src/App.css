@@ -1,7 +1,13 @@
 body {
   margin: 0;
   background-color: black !important;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* .header {
@@ -548,63 +554,69 @@ header {
 
 /* footer styles */
 footer {
-  position: sticky;
+  position: relative;
   width: 100%;
-  height: auto;
-  background-color: black;
-  color: white;
+  background-color: #000000;
+  color: #94a3b8;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  font-size: 14px;
-  bottom: 0;
+  padding: 2.25rem 5%;
+  font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: auto;
+  z-index: 10;
 }
 
 .left-icons {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 5%;
+  gap: 1.25rem;
 }
 
 .icon {
-  color: white;
-  font-size: 20px;
-  margin-right: 10px;
+  color: #94a3b8;
+  font-size: 1.25rem;
+  transition: color 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
 
 .icon:hover {
-  color: gray;
+  color: #ffffff;
+  transform: translateY(-2px);
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
 }
 
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .copy {
-  margin-left: 10px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  line-height: 1.5;
   text-align: center;
 }
 
 .right {
-  text-align: right;
-  margin-right: 5%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .right a {
   text-decoration: none;
-  color: white;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  transition: color 0.25s ease-in-out;
 }
 
 .right a:hover {
   text-decoration: underline;
-  color: gray;
-  transition: all 0.4s ease-in-out;
+  color: #38bdf8;
 }
 
 /* Media queries */
@@ -725,11 +737,22 @@ footer {
   }
 
   footer {
-    /* position: fixed; */
-    position: sticky;
-    /* margin-top: 1%; */
-    bottom: 0;
+    position: relative;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    justify-content: center;
+    bottom: auto;
+    z-index: auto;
+  }
+
+  .left-icons,
+  .center,
+  .right {
+    margin: 0;
     width: 100%;
-    z-index: 9999;
+    justify-content: center;
+    text-align: center;
   }
 }
