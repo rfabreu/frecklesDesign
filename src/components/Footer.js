@@ -6,14 +6,14 @@ function Footer() {
     return (
         <footer>
             <div className='left-icons'>
-                <a href='https://www.instagram.com/carlacaetano.antunes/' target='_blank' rel='noopener noreferrer'>
-                    <FontAwesomeIcon icon={faInstagram} className='icon' />
+                <a href='https://www.instagram.com/carlacaetano.antunes/' target='_blank' rel='noopener noreferrer' aria-label='Carla Antunes on Instagram'>
+                    <FontAwesomeIcon icon={faInstagram} className='icon' aria-hidden='true' />
                 </a>
-                <a href='https://www.linkedin.com/in/carlacaetano/' target='_blank' rel='noopener noreferrer'>
-                    <FontAwesomeIcon icon={faLinkedin} className='icon' />
+                <a href='https://www.linkedin.com/in/carlacaetano/' target='_blank' rel='noopener noreferrer' aria-label='Carla Antunes on LinkedIn'>
+                    <FontAwesomeIcon icon={faLinkedin} className='icon' aria-hidden='true' />
                 </a>
-                <a href='https://www.behance.net/eutenhosardas' target='_blank' rel='noopener noreferrer'>
-                    <FontAwesomeIcon icon={faBehance} className='icon' />
+                <a href='https://www.behance.net/eutenhosardas' target='_blank' rel='noopener noreferrer' aria-label='Carla Antunes on Behance'>
+                    <FontAwesomeIcon icon={faBehance} className='icon' aria-hidden='true' />
                 </a>
             </div>
             <div className='center'>
