@@ -150,13 +150,21 @@ export default function Gallery() {
                         {colArtworks.map((art, itemIndex) => (
                             <article key={art.id} className='gallery-item mb-5'>
                                 <div className='img-wrapper'>
-                                    <img
-                                        src={art.imageUrl}
-                                        className='w-100 shadow-1-strong rounded mb-3'
-                                        alt={art.alt}
-                                        loading={colIndex === 0 && itemIndex === 0 ? 'eager' : 'lazy'}
+                                    <button
+                                        type='button'
+                                        className='gallery-thumb-btn'
+                                        aria-label={`View ${art.title} in full screen`}
+                                        aria-describedby={`thumb-alt-${art.id}`}
                                         onClick={() => handleImageClick(art.id)}
-                                    />
+                                    >
+                                        <img
+                                            id={`thumb-alt-${art.id}`}
+                                            src={art.imageUrl}
+                                            className='w-100 shadow-1-strong rounded mb-3'
+                                            alt={art.alt}
+                                            loading={colIndex === 0 && itemIndex === 0 ? 'eager' : 'lazy'}
+                                        />
+                                    </button>
                                     <span className={`card-badge ${art.sold ? 'badge-sold' : 'badge-available'}`}>
                                         {art.sold ? 'Private Collection' : 'Available'}
                                     </span>

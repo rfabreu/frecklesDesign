@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  push:
+    branches:
+      - develop
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Unit Tests
+        run: npm test -- --watchAll=false
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Verify CNAME and SEO/GEO Assets Preservation
+        run: |
+          for file in CNAME sitemap.xml robots.txt llms.txt llms-full.txt; do
+            if [ ! -f "build/$file" ]; then
+              echo "Error: build/$file does not exist."
+              exit 1
+            fi
+          done
+          echo "All required domain, SEO, and LLM assets verified in build folder."
