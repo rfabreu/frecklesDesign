@@ -15,7 +15,7 @@ Live site: <https://frecklesdesign.ca>
 
 ## Local development
 
-Requires Node.js 20.
+Use Node.js 20 (the version CI uses; it is not enforced by `package.json`).
 
 ```bash
 npm ci                         # install dependencies from the lockfile
@@ -63,7 +63,7 @@ When an artwork is added, changed, or marked as sold, update all five files in t
   npm test -- --watchAll=false
   npm run build
   ```
-  and that `build/` contains `CNAME`, `sitemap.xml`, `robots.txt`, `llms.txt`, and `llms-full.txt`. The `CI` workflow (job `verify`) runs the same checks on PRs to `develop`/`main` and on pushes to `develop`.
+  CI sets `CI=true`, so ESLint warnings fail the build there; use `CI=true npm run build` locally to match. Also check that `build/` contains `CNAME`, `sitemap.xml`, `robots.txt`, `llms.txt`, and `llms-full.txt`. The `CI` workflow (job `verify`) runs the same checks on PRs to `develop`/`main` and on pushes to `develop`.
 - PRs need review before merging.
 - Delete branches after they are merged.
 
