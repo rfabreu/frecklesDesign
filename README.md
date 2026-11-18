@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Freckles Design
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Portfolio website for artist **Carla Antunes** (Freckles Design): a gallery of original acrylic paintings, with contact and commission information.
 
-## Available Scripts
+Live site: <https://frecklesdesign.ca>
 
-In the project directory, you can run:
+## Tech stack
 
-### `npm start`
+- React 18 (Create React App / `react-scripts`)
+- MDB React UI Kit (`mdb-react-ui-kit`) and Bootstrap CSS
+- FontAwesome 6
+- `react-modal` for the artwork viewer
+- Images hosted on Cloudinary
+- Hosted on GitHub Pages (custom domain via `public/CNAME`)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Local development
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Requires Node.js 20.
 
-### `npm test`
+```bash
+npm ci                         # install dependencies from the lockfile
+npm start                      # dev server at http://localhost:3000
+npm test -- --watchAll=false   # run unit tests once
+npm run build                  # production build into build/
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project structure
 
-### `npm run build`
+```
+src/
+  App.js              Page composition: Header, Gallery, Follow, Footer
+  components/         Header, Gallery, Follow, Footer (LandingPage is currently unused)
+  data/artworks.json  Artwork catalog rendered by the Gallery
+public/
+  index.html          Meta tags and JSON-LD structured data
+  sitemap.xml         Sitemap
+  robots.txt          Crawler rules
+  llms.txt            Short site summary for LLMs
+  llms-full.txt       Full site/artwork description for LLMs
+  CNAME               Custom domain (must survive the build)
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Keeping artwork data in sync
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Artwork facts (titles, mediums, dimensions, sold status, image URLs) are currently duplicated in:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `src/data/artworks.json`
+- the JSON-LD in `public/index.html`
+- `public/sitemap.xml`
+- `public/llms.txt`
+- `public/llms-full.txt`
 
-### `npm run eject`
+When an artwork is added, changed, or marked as sold, update all five files in the same PR.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contributing workflow
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Never commit directly to `main` or `gh-pages`.
+- Work on `feature/*`, `fix/*`, or `chore/*` branches and open a PR to `develop`. `develop` is then merged into `main`.
+- Use [conventional commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `chore:`, `docs:`, `ci:`).
+- Before opening a PR, make sure this passes:
+  ```bash
+  npm ci
+  npm test -- --watchAll=false
+  npm run build
+  ```
+  and that `build/` contains `CNAME`, `sitemap.xml`, `robots.txt`, `llms.txt`, and `llms-full.txt`. The `CI` workflow (job `verify`) runs the same checks on PRs to `develop`/`main` and on pushes to `develop`.
+- PRs need review before merging.
+- Delete branches after they are merged.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Pushing to `main` triggers the `Build and Deploy` GitHub Actions workflow (`.github/workflows/buildDeploy.yaml`), which runs tests, builds, verifies the assets above, and publishes `build/` to the `gh-pages` branch. Do not deploy manually.
