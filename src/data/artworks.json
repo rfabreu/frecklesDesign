@@ -2,109 +2,133 @@
   {
     "id": "fernando-pessoa",
     "title": "Fernando Pessoa",
+    "caption": "Fernando Pessoa, poeta português (Portuguese Poet)",
     "medium": "Acrylic Painting",
     "dimensions": "36in x 36in",
     "sold": false,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030195/Freckles%20Design/fernando_rzkj8q.png",
-    "alt": "Fernando Pessoa, poeta português (Portuguese Poet). Acrylic technique, dimensions = 36in X 36in. Available for sale."
+    "alt": "Fernando Pessoa, poeta português (Portuguese Poet). Acrylic technique, dimensions = 36in X 36in. Available for sale.",
+    "description": "Portrait of Portugal's renowned modernist poet and writer Fernando Pessoa. The composition captures Pessoa's enigmatic presence, framed with subtle Portuguese architectural and literary motifs."
   },
   {
     "id": "acores",
     "title": "Açores - Ilhéu de Vila Franca",
+    "caption": "Açores - ilhéu de Vila Franca",
     "medium": "Acrylic Painting",
     "dimensions": "24in x 30in",
     "sold": false,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/acores_uei20r.png",
-    "alt": "Açores - ilhéu de Vila Franca. Acrylic technique, dimensions = 24in X 30in. Available for sale."
+    "alt": "Açores - ilhéu de Vila Franca. Acrylic technique, dimensions = 24in X 30in. Available for sale.",
+    "description": "A homage to the Azores archipelago, capturing the volcanic islet of Vila Franca do Campo off São Miguel Island. Rich blues and earthy tones celebrate the volcanic drama and pristine beauty of the Atlantic islands."
   },
   {
     "id": "nazarena",
     "title": "Nazarena",
+    "caption": "Nazarena - Praia da Nazaré (Nazaré beach)",
     "medium": "Acrylic Painting",
     "dimensions": "30in x 48in",
     "sold": true,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030196/Freckles%20Design/nazare_lzpug7.png",
-    "alt": "Nazarena - Praia da Nazaré (Nazaré beach). Acrylic technique, dimensions = 30in X 48in. Private Collection / Sold."
+    "alt": "Nazarena - Praia da Nazaré (Nazaré beach). Acrylic technique, dimensions = 30in X 48in. Private Collection / Sold.",
+    "description": "Depiction of a traditional woman of Nazaré (a *Nazarena*) wearing the iconic seven skirts (*sete saias*), observing the Atlantic sea. Celebrates the resilience and maritime heritage of Portuguese fishing communities."
   },
   {
     "id": "andorinha",
     "title": "Andorinha",
+    "caption": "Andorinha (Swallow)",
     "medium": "Acrylic Painting",
     "dimensions": "36in x 36in",
     "sold": false,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030192/Freckles%20Design/andorinhas_ep0xb5.png",
-    "alt": "Andorinha (Swallow). Acrylic technique, dimensions = 36in X 36in. Available for sale."
+    "alt": "Andorinha (Swallow). Acrylic technique, dimensions = 36in X 36in. Available for sale.",
+    "description": "The swallow (*andorinha*) is a quintessential Portuguese symbol of loyalty, family, home, and love popularized by Rafael Bordalo Pinheiro. Migrating each year yet always returning to the same nest, it resonates deeply with diaspora identity."
   },
   {
     "id": "sobreiro",
     "title": "Sobreiro do Alentejo",
+    "caption": "Sobreiro do Alentejo (Alentejo cork oak)",
     "medium": "Acrylic Painting",
     "dimensions": "36in x 36in",
     "sold": false,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030196/Freckles%20Design/sobreiro_szofnx.png",
-    "alt": "Sobreiro do Alentejo (Alentejo cork oak). Acrylic technique, dimensions = 36in X 36in. Available for sale."
+    "alt": "Sobreiro do Alentejo (Alentejo cork oak). Acrylic technique, dimensions = 36in X 36in. Available for sale.",
+    "description": "The cork oak (*sobreiro*) of the Alentejo plains, Portugal's national tree. The painting captures the golden light, rustic bark, and timeless tranquility of the southern Portuguese countryside."
   },
   {
     "id": "eletrico",
     "title": "Elétrico de Lisboa",
+    "caption": "Elétrico de Lisboa (Streetcar - Lisbon)",
     "medium": "Acrylic Painting",
     "dimensions": "30in x 48in",
     "sold": true,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030197/Freckles%20Design/streetcar_kq6vxa.png",
-    "alt": "Elétrico de Lisboa (Streetcar - Lisbon). Acrylic technique, dimensions = 30in X 48in. Private Collection / Sold."
+    "alt": "Elétrico de Lisboa (Streetcar - Lisbon). Acrylic technique, dimensions = 30in X 48in. Private Collection / Sold.",
+    "description": "The famous yellow Lisbon tram climbing the cobblestone streets of historic Alfama/Bairro Alto, evoking the vintage romance, texture, and urban rhythm of the Portuguese capital."
   },
   {
     "id": "sardinhas",
     "title": "Sardinhas",
+    "caption": "Sardinhas portuguesas (Portuguese sardines)",
     "medium": "Acrylic Painting",
     "dimensions": "24in x 24in",
     "sold": false,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030196/Freckles%20Design/sardinhas_tty2s2.png",
-    "alt": "Sardinhas portuguesas (Portuguese sardines). Acrylic technique, dimensions = 24in X 24in. Available for sale."
+    "alt": "Sardinhas portuguesas (Portuguese sardines). Acrylic technique, dimensions = 24in X 24in. Available for sale.",
+    "description": "Grilled sardines are a cultural pillar of Portuguese gastronomy and Lisbon's Santos Populares (St. Anthony's festivities). The piece combines vibrant contemporary colour palettes with traditional coastal life."
   },
   {
     "id": "fado",
     "title": "Noite de Fado",
+    "caption": "Noite de Fado (Fado night)",
     "medium": "Acrylic Painting",
     "dimensions": "36in x 48in",
     "sold": true,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/fado_f6xdeh.png",
-    "alt": "Noite de Fado (Fado night). Acrylic technique, dimensions = 36in X 48in. Private Collection / Sold."
+    "alt": "Noite de Fado (Fado night). Acrylic technique, dimensions = 36in X 48in. Private Collection / Sold.",
+    "description": "A nocturnal Lisbon Fado scene, exploring the depth of *saudade* (longing/nostalgia), Portuguese guitar (*guitarra portuguesa*), and the emotional intensity of traditional singers wrapped in black shawls."
   },
   {
     "id": "emigracao",
     "title": "Emigração",
+    "caption": "Emigração (Portuguese emigration)",
     "medium": "Acrylic Painting",
     "dimensions": "30in x 36in",
     "sold": false,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/immigrants_uueqbl.png",
-    "alt": "Emigração (Portuguese emigration). Acrylic technique, dimensions = 30in X 36in. Available for sale."
+    "alt": "Emigração (Portuguese emigration). Acrylic technique, dimensions = 30in X 36in. Available for sale.",
+    "description": "A poignant tribute to generations of Portuguese men and women who departed across the Atlantic to Canada, France, the Americas, and beyond, carrying suitcases, determination, and enduring cultural pride."
   },
   {
     "id": "peixaria",
     "title": "Peixaria Portuguesa",
+    "caption": "Peixaria Portuguesa (Portuguese fish market)",
     "medium": "Acrylic Painting",
     "dimensions": "36in x 36in",
     "sold": false,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/market_wfnqjt.png",
-    "alt": "Peixaria Portuguesa (Portuguese fish market). Acrylic technique, dimensions = 36in X 36in. Available for sale."
+    "alt": "Peixaria Portuguesa (Portuguese fish market). Acrylic technique, dimensions = 36in X 36in. Available for sale.",
+    "description": "The lively atmosphere of a traditional coastal fish market, honoring fishmongers (*varinas* / *peixeiras*) who have fueled seaside communities with passion and pride."
   },
   {
     "id": "descobrimentos",
     "title": "Padrão dos Descobrimentos",
+    "caption": "Padrão dos Descobrimentos (Monument of the discoveries)",
     "medium": "Acrylic Painting",
     "dimensions": "36in x 36in",
     "sold": true,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030193/Freckles%20Design/descobrimento_dvjdbi.png",
-    "alt": "Padrão dos Descobrimentos (Monument of the discoveries). Acrylic technique, dimensions = 36in X 36in. Private Collection / Sold."
+    "alt": "Padrão dos Descobrimentos (Monument of the discoveries). Acrylic technique, dimensions = 36in X 36in. Private Collection / Sold.",
+    "description": "The Monument of the Discoveries standing proudly along the Tagus River in Belém, Lisbon. Captured with bold angles, celebrating maritime history and navigation."
   },
   {
     "id": "revolucao",
     "title": "Revolução de 25 de Abril",
+    "caption": "Revolução de 25 de Abril (April 25 Revolution)",
     "medium": "Acrylic Painting",
     "dimensions": "36in x 48in",
     "sold": false,
     "imageUrl": "https://res.cloudinary.com/dchkpwyce/image/upload/f_auto,q_auto/v1684030196/Freckles%20Design/revolucao_yuf0a4.png",
-    "alt": "Revolução de 25 de Abril (April 25 Revolution). Acrylic technique, dimensions = 36in X 48in. Available for sale."
+    "alt": "Revolução de 25 de Abril (April 25 Revolution). Acrylic technique, dimensions = 36in X 48in. Available for sale.",
+    "description": "The Carnation Revolution of 1974 (*Revolução dos Cravos*), which brought democracy and freedom to Portugal. Red carnations symbolizing peaceful resistance and national renewal are celebrated with vibrant expressive strokes."
   }
 ]

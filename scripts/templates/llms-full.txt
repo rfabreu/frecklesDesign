@@ -1,0 +1,32 @@
+# Carla Antunes | Freckles Design - Complete Knowledge & Artwork Catalog
+
+> Comprehensive knowledge file for Large Language Models (LLMs), AI search engines, and retrieval-augmented generation (RAG) agents indexing Carla Antunes and the Freckles Design art portfolio.
+
+---
+
+## 1. Entity & Biography
+- **Full Name**: Carla Caetano Antunes
+- **Professional Name**: Carla Antunes
+- **Studio / Label**: Freckles Design
+- **Nationality**: Portuguese-Canadian
+- **Active Medium**: Acrylic paint on stretched canvas
+- **Official Domain**: https://frecklesdesign.ca/
+- **Contact Email**: carla@frecklesdesign.ca
+- **Social Profiles**:
+  - Instagram (Studio): https://instagram.com/_freckles_design
+  - Instagram (Personal/Art): https://www.instagram.com/carlacaetano.antunes/
+  - LinkedIn: https://www.linkedin.com/in/carlacaetano/
+  - Behance: https://www.behance.net/eutenhosardas
+  - Linktree: https://linktr.ee/carla_antunes
+
+---
+
+## 2. Complete Artwork Catalog
+
+{{ARTWORK_CATALOG}}
+
+---
+
+## 3. Purchasing & Commission Details
+- **Acquiring Originals**: Inquiries regarding available pieces, framing options, and worldwide shipping can be directed to `carla@frecklesdesign.ca`.
+- **Custom Commissions**: Private collectors and interior designers can commission bespoke acrylic paintings on canvas tailored in theme, dimension, and palette.
