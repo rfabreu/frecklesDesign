@@ -64,6 +64,8 @@ function validate(artworks) {
     FIELDS.filter(key => key !== 'sold' && key !== 'alt').forEach(key => {
       if (typeof art[key] !== 'string' || art[key].trim() === '') {
         errors.push(`${where}: "${key}" must be a non-empty string`);
+      } else if (/[\r\n]/.test(art[key])) {
+        errors.push(`${where}: "${key}" must be a single line`);
       }
     });
     if (typeof art.sold !== 'boolean') errors.push(`${where}: "sold" must be true or false`);
@@ -100,19 +102,20 @@ function escapeXml(value) {
     .replace(/'/g, '&apos;');
 }
 
+// Replaces each {{NAME}} token in one pass, so artwork text is never re-scanned for tokens.
 function renderTemplate(name, values) {
-  let output = fs.readFileSync(path.join(ROOT, TEMPLATE_DIR, name), 'utf8');
-  Object.entries(values).forEach(([key, value]) => {
-    const token = `{{${key}}}`;
-    const parts = output.split(token);
-    if (parts.length !== 2) {
-      throw new Error(`${TEMPLATE_DIR}/${name}: expected ${token} exactly once, found ${parts.length - 1}`);
-    }
-    output = parts.join(value);
+  const template = fs.readFileSync(path.join(ROOT, TEMPLATE_DIR, name), 'utf8');
+  const tokens = template.match(/\{\{[^{}]*\}\}/g) || [];
+  Object.keys(values).forEach(key => {
+    const count = tokens.filter(token => token === `{{${key}}}`).length;
+    if (count !== 1) throw new Error(`${TEMPLATE_DIR}/${name}: expected {{${key}}} exactly once, found ${count}`);
   });
-  const leftover = output.match(/\{\{[A-Z_]+\}\}/);
-  if (leftover) throw new Error(`${TEMPLATE_DIR}/${name}: unknown placeholder ${leftover[0]}`);
-  return output;
+  return template.replace(/\{\{([^{}]*)\}\}/g, (token, key) => {
+    if (!Object.prototype.hasOwnProperty.call(values, key)) {
+      throw new Error(`${TEMPLATE_DIR}/${name}: unknown placeholder ${token}`);
+    }
+    return values[key];
+  });
 }
 
 function renderJsonLdItem(art, index) {
@@ -229,7 +232,12 @@ function main(argv) {
   }
 
   stale.forEach(file => fs.writeFileSync(path.join(ROOT, file), files[file]));
-  console.log(stale.length > 0 ? `Updated: ${stale.join(', ')}` : 'Generated artwork files are up to date.');
+  if (stale.length > 0) {
+    console.log(`Updated: ${stale.join(', ')}`);
+    console.log(`(These files are generated: edit ${DATA_FILE} or ${TEMPLATE_DIR}/, not the output. Commit the result.)`);
+  } else {
+    console.log('Generated artwork files are up to date.');
+  }
   return 0;
 }
 

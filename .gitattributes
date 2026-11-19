@@ -1,0 +1,8 @@
+# The artwork generator and its staleness check compare bytes exactly, so keep
+# its inputs and outputs LF-only on every platform (e.g. Windows core.autocrlf).
+src/data/artworks.json text eol=lf
+scripts/templates/* text eol=lf
+public/index.html text eol=lf
+public/sitemap.xml text eol=lf
+public/llms.txt text eol=lf
+public/llms-full.txt text eol=lf

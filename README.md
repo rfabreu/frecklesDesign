@@ -71,11 +71,12 @@ public/
 
 Everything else in those four `public/` files (meta tags, artist bio, themes prose, sitemap `lastmod`, purchasing text) comes from the matching file in `scripts/templates/`. Edit the template, not the file in `public/`. Prose that mentions artworks by name (the `llms.txt` themes, the meta keywords, the Open Graph image) is not generated, so check it by hand when you add or rename a piece.
 
-`npm start` and `npm run build` run the generator first (`prestart`/`prebuild`), so the files stay current while you work. The generated files are committed, so a PR shows the real effect of a data change. When you add, change, or sell an artwork:
+`npm start` and `npm run build` run the generator first (`prestart`/`prebuild`). `prestart` runs only once, when the dev server starts, so if you edit `artworks.json` while `npm start` is running, run `npm run generate` again to refresh `alt` and the `public/` files. The generated files are committed, so a PR shows the real effect of a data change. When you add, change, or sell an artwork:
 
 1. Edit `src/data/artworks.json` (and a template, if the change touches prose).
 2. Run `npm run generate` (or just `npm start`).
-3. Commit `artworks.json` together with the regenerated `public/` files.
+3. If the catalog changed, bump `<lastmod>` in `scripts/templates/sitemap.xml` (it is not derived, so the output stays reproducible).
+4. Commit `artworks.json` together with the regenerated `public/` files.
 
 `npm test` (and therefore CI) fails if any generated file differs from what `artworks.json` and the templates produce; `npm run generate:check` runs the same check without writing anything. `npm test` deliberately does not regenerate first.
 

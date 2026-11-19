@@ -117,7 +117,16 @@ describe('validate', () => {
     expect(errors).toMatch(/"sold" must be true or false/);
   });
 
+  test('rejects multi-line text, which would break the Markdown outputs', () => {
+    expect(validate([{ ...sample, description: 'One.\n\n# Two' }]).join('\n')).toMatch(/"description" must be a single line/);
+  });
+
   test('renderAll refuses invalid data', () => {
     expect(() => renderAll([{ ...sample, id: 'Bad Id' }])).toThrow(/Invalid artwork data/);
+  });
+
+  test('artwork text that looks like a placeholder is copied literally', () => {
+    const files = renderAll([{ ...sample, caption: 'Uses {{ARTWORK_COUNT}} literally' }]);
+    expect(files['public/sitemap.xml']).toContain('Uses {{ARTWORK_COUNT}} literally');
   });
 });
