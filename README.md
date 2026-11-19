@@ -29,28 +29,58 @@ npm run build                  # production build into build/
 ```
 src/
   App.js              Page composition: Header, Gallery, Follow, Footer
-  components/         Header, Gallery, Follow, Footer (LandingPage is currently unused)
-  data/artworks.json  Artwork catalog rendered by the Gallery
+  components/         Header, Gallery, Follow, Footer
+  data/artworks.json  Artwork catalog: the single source of truth for artwork facts
+scripts/
+  generate-artwork-files.js  Generates the artwork parts of public/ from artworks.json
+  templates/                 Hand-written templates for the generated public/ files
 public/
-  index.html          Meta tags and JSON-LD structured data
-  sitemap.xml         Sitemap
+  index.html          Meta tags and JSON-LD structured data (generated)
+  sitemap.xml         Sitemap (generated)
   robots.txt          Crawler rules
-  llms.txt            Short site summary for LLMs
-  llms-full.txt       Full site/artwork description for LLMs
+  llms.txt            Short site summary for LLMs (generated)
+  llms-full.txt       Full site/artwork description for LLMs (generated)
   CNAME               Custom domain (must survive the build)
 ```
 
 ### Keeping artwork data in sync
 
-Artwork facts (titles, mediums, dimensions, sold status, image URLs) are currently duplicated in:
+`src/data/artworks.json` is the only place artwork facts are edited. Each entry has these fields:
 
-- `src/data/artworks.json`
-- the JSON-LD in `public/index.html`
-- `public/sitemap.xml`
-- `public/llms.txt`
-- `public/llms-full.txt`
+| Field | Edited by hand? | Meaning |
+|---|---|---|
+| `id` | yes | URL-safe slug (`a-z`, `0-9`, `-`), unique |
+| `title` | yes | Title as shown in the gallery |
+| `caption` | yes | Identifying phrase with its English gloss, e.g. `Fernando Pessoa, poeta português (Portuguese Poet)` |
+| `medium` | yes | Must be a key of `MEDIA` in `scripts/generate-artwork-files.js` (currently `Acrylic Painting`) |
+| `dimensions` | yes | Width x height in inches, exactly like `36in x 48in` |
+| `sold` | yes | `true` once the piece is in a private collection |
+| `imageUrl` | yes | Cloudinary `https://` URL |
+| `alt` | **no, generated** | Derived from `caption` + `dimensions` + `sold` |
+| `description` | yes | Description and symbolism prose used in `llms-full.txt` |
 
-When an artwork is added, changed, or marked as sold, update all five files in the same PR.
+**Edit `caption`, never `alt`.** `alt` is derived from `caption`, `dimensions` and `sold`, so a hand-edited `alt` is overwritten by `npm run generate` and fails the staleness check until it is regenerated.
+
+`npm run generate` (`scripts/generate-artwork-files.js`, plain Node) validates `artworks.json` and regenerates from it:
+
+- the `alt` field of each entry in `src/data/artworks.json`
+- the JSON-LD `ItemList` in `public/index.html`
+- the image entries in `public/sitemap.xml`
+- the "Artwork Portfolio" list in `public/llms.txt`
+- the "Complete Artwork Catalog" in `public/llms-full.txt`
+
+Everything else in those four `public/` files (meta tags, artist bio, themes prose, sitemap `lastmod`, purchasing text) comes from the matching file in `scripts/templates/`. Edit the template, not the file in `public/`. Prose that mentions artworks by name (the `llms.txt` themes, the meta keywords, the Open Graph image) is not generated, so check it by hand when you add or rename a piece.
+
+`npm start` and `npm run build` run the generator first (`prestart`/`prebuild`). `prestart` runs only once, when the dev server starts, so if you edit `artworks.json` while `npm start` is running, run `npm run generate` again to refresh `alt` and the `public/` files. The generated files are committed, so a PR shows the real effect of a data change. When you add, change, or sell an artwork:
+
+1. Edit `src/data/artworks.json` (and a template, if the change touches prose).
+2. Run `npm run generate` (or just `npm start`).
+3. If the catalog changed, bump `<lastmod>` in `scripts/templates/sitemap.xml` (it is not derived, so the output stays reproducible).
+4. Commit `artworks.json` together with the regenerated `public/` files.
+
+`npm test` (and therefore CI) fails if any generated file differs from what `artworks.json` and the templates produce; `npm run generate:check` runs the same check without writing anything. `npm test` deliberately does not regenerate first.
+
+Artworks are price on request, so the JSON-LD `Offer` for each piece carries only `availability` (`InStock`/`SoldOut`) and `url`, with no `price` or `priceCurrency`.
 
 ## Contributing workflow
 
