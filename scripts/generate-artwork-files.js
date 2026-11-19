@@ -136,7 +136,6 @@ function renderJsonLdItem(art, index) {
     '                "offers": {',
     '                  "@type": "Offer",',
     `                  "availability": ${jsonString(availability)},`,
-    '                  "priceCurrency": "CAD",',
     `                  "url": ${jsonString(SITE_URL)}`,
     '                }',
     '              }',

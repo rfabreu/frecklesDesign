@@ -56,6 +56,11 @@ test('JSON-LD in public/index.html mirrors artworks.json', () => {
     expect(item.name).toBe(art.title);
     expect(item.image).toBe(art.imageUrl);
     expect(item.description).toBe(art.alt);
+    // Artworks are price on request: an Offer carries availability only, never a currency without a price.
+    expect(item.offers['@type']).toBe('Offer');
+    expect(item.offers).not.toHaveProperty('price');
+    expect(item.offers).not.toHaveProperty('priceCurrency');
+    expect(item.offers).not.toHaveProperty('priceSpecification');
   });
 });
 
