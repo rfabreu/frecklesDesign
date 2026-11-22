@@ -124,8 +124,8 @@ test('JSON-LD in public/index.html agrees with artworks.json', () => {
     expect(item).toBeDefined();
 
     const [width, height] = art.dimensions.match(/\d+/g);
-    expect(item.width.name).toBe(`${width} inches`);
-    expect(item.height.name).toBe(`${height} inches`);
+    expect(item.width).toMatchObject({ '@type': 'QuantitativeValue', value: Number(width), unitCode: 'INH' });
+    expect(item.height).toMatchObject({ '@type': 'QuantitativeValue', value: Number(height), unitCode: 'INH' });
     expect(item.offers.availability).toBe(
       art.sold ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock'
     );

@@ -29,10 +29,14 @@ const MEDIA = {
   'Acrylic Painting': { technique: 'Acrylic technique', artMedium: 'Acrylic on Canvas' },
 };
 
-const DIMENSIONS_RE = /^(\d+)in x (\d+)in$/;
+const DIMENSIONS_RE = /^([1-9]\d*)in x ([1-9]\d*)in$/;
 
+// Returns { width, height } as digit strings, in inches. Throws on anything that is not "<w>in x <h>in".
 function parseDimensions(dimensions) {
-  const match = DIMENSIONS_RE.exec(dimensions);
+  const match = typeof dimensions === 'string' ? DIMENSIONS_RE.exec(dimensions) : null;
+  if (!match) {
+    throw new Error(`Invalid dimensions ${JSON.stringify(dimensions)}: expected a string like "36in x 48in"`);
+  }
   return { width: match[1], height: match[2] };
 }
 
@@ -64,8 +68,10 @@ function validate(artworks) {
     FIELDS.filter(key => key !== 'sold' && key !== 'alt').forEach(key => {
       if (typeof art[key] !== 'string' || art[key].trim() === '') {
         errors.push(`${where}: "${key}" must be a non-empty string`);
-      } else if (/[\r\n]/.test(art[key])) {
+      } else if (/[\r\n\u2028\u2029]/.test(art[key])) {
         errors.push(`${where}: "${key}" must be a single line`);
+      } else if (art[key] !== art[key].trim()) {
+        errors.push(`${where}: "${key}" must not have leading or trailing whitespace`);
       }
     });
     if (typeof art.sold !== 'boolean') errors.push(`${where}: "sold" must be true or false`);
@@ -75,14 +81,21 @@ function validate(artworks) {
       if (seen.has(art.id)) errors.push(`${where}: duplicate id "${art.id}"`);
       seen.add(art.id);
     }
-    if (typeof art.dimensions === 'string' && !DIMENSIONS_RE.test(art.dimensions)) {
-      errors.push(`${where}: "dimensions" must look like "36in x 48in"`);
+    if (typeof art.dimensions === 'string') {
+      try {
+        parseDimensions(art.dimensions);
+      } catch (error) {
+        errors.push(`${where}: "dimensions" must look like "36in x 48in"`);
+      }
     }
-    if (typeof art.medium === 'string' && !MEDIA[art.medium]) {
+    if (typeof art.medium === 'string' && !Object.prototype.hasOwnProperty.call(MEDIA, art.medium)) {
       errors.push(`${where}: unknown medium "${art.medium}" (add it to MEDIA in scripts/generate-artwork-files.js)`);
     }
     if (typeof art.imageUrl === 'string' && !art.imageUrl.startsWith('https://')) {
       errors.push(`${where}: "imageUrl" must start with https://`);
+    }
+    if (typeof art.imageUrl === 'string' && /[\s\\<>|`"]/.test(art.imageUrl)) {
+      errors.push(`${where}: "imageUrl" must not contain spaces or any of \\ < > | \` "`);
     }
   });
   return errors;
@@ -91,6 +104,31 @@ function validate(artworks) {
 // JSON string literal that is also safe inside an HTML <script> element.
 function jsonString(value) {
   return JSON.stringify(value).replace(/</g, '\\u003c');
+}
+
+// Escapes characters that would change the structure of the Markdown outputs (llms.txt, llms-full.txt):
+// bold/italic, code spans, links, raw HTML, table/list separators, and a leading "#" (heading).
+// Letters (including accents), digits, spaces and . , ; : ( ) ' " ! ? - / & are left alone.
+function escapeMarkdown(value) {
+  return escapeMarkdownCharacters(value).replace(/^#/, '\\#');
+}
+
+function escapeMarkdownCharacters(value) {
+  return value.replace(/[\\`*_[\]<|]/g, '\\$&');
+}
+
+// Like escapeMarkdown, but keeps balanced single-asterisk emphasis, e.g. "the swallow (*andorinha*)".
+// Descriptions are written with this inline Markdown on purpose. An emphasis span is `*text*` with no space
+// inside its asterisks and no letter, digit, "*" or "\" touching them from outside; any other "*" (stray, doubled,
+// intraword like 2*3) is escaped.
+const EMPHASIS_RE = /((?<![\p{L}\p{N}_*\\])\*(?=\S)[^*]+?(?<=\S)\*(?![\p{L}\p{N}_*]))/u;
+
+function escapeMarkdownKeepingEmphasis(value) {
+  return value
+    .split(EMPHASIS_RE)
+    .map((part, index) => (index % 2 === 1 ? `*${escapeMarkdownCharacters(part.slice(1, -1))}*` : escapeMarkdownCharacters(part)))
+    .join('')
+    .replace(/^#/, '\\#');
 }
 
 function escapeXml(value) {
@@ -118,6 +156,11 @@ function renderTemplate(name, values) {
   });
 }
 
+// schema.org QuantitativeValue in inches (UN/CEFACT code INH); `value` is a JSON number.
+function renderInches(inches) {
+  return `{ "@type": "QuantitativeValue", "value": ${Number(inches)}, "unitCode": "INH", "unitText": "in" }`;
+}
+
 function renderJsonLdItem(art, index) {
   const { width, height } = parseDimensions(art.dimensions);
   const availability = art.sold ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock';
@@ -131,8 +174,8 @@ function renderJsonLdItem(art, index) {
     `                "name": ${jsonString(art.title)},`,
     `                "artMedium": ${jsonString(MEDIA[art.medium].artMedium)},`,
     '                "artform": "Painting",',
-    `                "width": { "@type": "Distance", "name": ${jsonString(`${width} inches`)} },`,
-    `                "height": { "@type": "Distance", "name": ${jsonString(`${height} inches`)} },`,
+    `                "width": ${renderInches(width)},`,
+    `                "height": ${renderInches(height)},`,
     `                "image": ${jsonString(art.imageUrl)},`,
     `                "description": ${jsonString(art.alt)},`,
     `                "creator": { "@id": ${jsonString(`${SITE_URL}#artist`)} },`,
@@ -157,20 +200,20 @@ function renderSitemapImage(art) {
 }
 
 function renderLlmsListItem(art) {
-  return `- **${art.title}** | ${art.dimensions} | ${art.medium} | ${art.sold ? 'SOLD' : 'Available'}`;
+  return `- **${escapeMarkdown(art.title)}** | ${art.dimensions} | ${art.medium} | ${art.sold ? 'SOLD' : 'Available'}`;
 }
 
 function renderLlmsFullEntry(art, index) {
   const { width, height } = parseDimensions(art.dimensions);
   return [
-    `### ${index + 1}. ${art.title}`,
+    `### ${index + 1}. ${escapeMarkdown(art.title)}`,
     `- **ID**: ${art.id}`,
-    `- **Title**: ${art.title}`,
+    `- **Title**: ${escapeMarkdown(art.title)}`,
     `- **Medium**: ${MEDIA[art.medium].artMedium}`,
     `- **Dimensions**: ${art.dimensions} (${inchesToCm(width)} x ${inchesToCm(height)})`,
     `- **Status**: ${art.sold ? 'SOLD (Private Collection)' : 'Available for purchase'}`,
     `- **Image URL**: ${art.imageUrl}`,
-    `- **Description & Symbolism**: ${art.description}`,
+    `- **Description & Symbolism**: ${escapeMarkdownKeepingEmphasis(art.description)}`,
   ].join('\n');
 }
 
@@ -253,9 +296,12 @@ if (require.main === module) {
 module.exports = {
   DATA_FILE,
   deriveAlt,
+  escapeMarkdown,
+  escapeMarkdownKeepingEmphasis,
   escapeXml,
   inchesToCm,
   jsonString,
+  parseDimensions,
   readArtworks,
   readIfExists,
   renderAll,
