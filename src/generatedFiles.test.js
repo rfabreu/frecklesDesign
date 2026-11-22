@@ -106,14 +106,13 @@ describe('parseDimensions', () => {
     expect(parseDimensions('36in x 48in')).toEqual({ width: '36', height: '48' });
   });
 
-  test.each(['24 x 30', '24in X 30in', '', '24in x 30in ', undefined, null, 24])(
-    'throws a clear error naming the input %p',
-    input => {
-      expect(() => parseDimensions(input)).toThrow(
-        new RegExp(`Invalid dimensions ${JSON.stringify(input) === undefined ? 'undefined' : JSON.stringify(input).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`)
-      );
-    }
-  );
+  test.each(['24 x 30', '24in X 30in', '', '24in x 30in ', undefined, null, 24])('throws for %p', input => {
+    expect(() => parseDimensions(input)).toThrow(/Invalid dimensions/);
+  });
+
+  test('the error names the input', () => {
+    expect(() => parseDimensions('24 x 30')).toThrow('Invalid dimensions "24 x 30": expected a string like "36in x 48in"');
+  });
 });
 
 describe('markdown escaping', () => {
@@ -136,6 +135,9 @@ describe('markdown escaping', () => {
       'the swallow (*andorinha*) and *saudade* here'
     );
     expect(escapeMarkdownKeepingEmphasis('2 * 3 and a lone * star')).toBe('2 \\* 3 and a lone \\* star');
+    expect(escapeMarkdownKeepingEmphasis('2*3 and 4*5, **bold**, *word*#tag')).toBe(
+      '2\\*3 and 4\\*5, \\*\\*bold\\*\\*, *word*#tag'
+    );
     expect(escapeMarkdownKeepingEmphasis('*a|b* <b>x</b> [l](u) `c` _u_')).toBe(
       '*a\\|b* \\<b>x\\</b> \\[l\\](u) \\`c\\` \\_u\\_'
     );
@@ -175,6 +177,16 @@ describe('validate', () => {
     const errors = validate([{ ...sample, medium: 'Oil Painting', sold: 'yes' }]).join('\n');
     expect(errors).toMatch(/unknown medium "Oil Painting"/);
     expect(errors).toMatch(/"sold" must be true or false/);
+  });
+
+  test('rejects prototype keys as medium', () => {
+    expect(validate([{ ...sample, medium: 'constructor' }]).join('\n')).toMatch(/unknown medium "constructor"/);
+  });
+
+  test('rejects image URLs that could break the Markdown outputs', () => {
+    ['https://e.com/a b.png', 'https://e.com/a|b.png', 'https://e.com/a<b>.png'].forEach(imageUrl => {
+      expect(validate([{ ...sample, imageUrl }]).join('\n')).toMatch(/"imageUrl" must not contain/);
+    });
   });
 
   test('rejects multi-line text, which would break the Markdown outputs', () => {

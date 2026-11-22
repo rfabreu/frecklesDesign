@@ -81,14 +81,21 @@ function validate(artworks) {
       if (seen.has(art.id)) errors.push(`${where}: duplicate id "${art.id}"`);
       seen.add(art.id);
     }
-    if (typeof art.dimensions === 'string' && !DIMENSIONS_RE.test(art.dimensions)) {
-      errors.push(`${where}: "dimensions" must look like "36in x 48in"`);
+    if (typeof art.dimensions === 'string') {
+      try {
+        parseDimensions(art.dimensions);
+      } catch (error) {
+        errors.push(`${where}: "dimensions" must look like "36in x 48in"`);
+      }
     }
-    if (typeof art.medium === 'string' && !MEDIA[art.medium]) {
+    if (typeof art.medium === 'string' && !Object.prototype.hasOwnProperty.call(MEDIA, art.medium)) {
       errors.push(`${where}: unknown medium "${art.medium}" (add it to MEDIA in scripts/generate-artwork-files.js)`);
     }
     if (typeof art.imageUrl === 'string' && !art.imageUrl.startsWith('https://')) {
       errors.push(`${where}: "imageUrl" must start with https://`);
+    }
+    if (typeof art.imageUrl === 'string' && /[\s<>|`"]/.test(art.imageUrl)) {
+      errors.push(`${where}: "imageUrl" must not contain spaces or any of < > | \` "`);
     }
   });
   return errors;
@@ -103,16 +110,25 @@ function jsonString(value) {
 // bold/italic, code spans, links, raw HTML, table/list separators, and a leading "#" (heading).
 // Letters (including accents), digits, spaces and . , ; : ( ) ' " ! ? - / & are left alone.
 function escapeMarkdown(value) {
-  return value.replace(/[\\`*_[\]<|]/g, '\\$&').replace(/^#/, '\\#');
+  return escapeMarkdownCharacters(value).replace(/^#/, '\\#');
+}
+
+function escapeMarkdownCharacters(value) {
+  return value.replace(/[\\`*_[\]<|]/g, '\\$&');
 }
 
 // Like escapeMarkdown, but keeps balanced single-asterisk emphasis, e.g. "the swallow (*andorinha*)".
-// Descriptions are written with this inline Markdown on purpose; a stray or unbalanced "*" is still escaped.
+// Descriptions are written with this inline Markdown on purpose. An emphasis span is `*text*` with no space
+// inside its asterisks and no letter, digit or "*" touching them from outside; any other "*" (stray, doubled,
+// intraword like 2*3) is escaped.
+const EMPHASIS_RE = /((?<![\p{L}\p{N}_*])\*(?=\S)[^*]+?(?<=\S)\*(?![\p{L}\p{N}_*]))/u;
+
 function escapeMarkdownKeepingEmphasis(value) {
   return value
-    .split(/(\*(?=\S)[^*]+?(?<=\S)\*)/)
-    .map((part, index) => (index % 2 === 1 ? `*${escapeMarkdown(part.slice(1, -1))}*` : escapeMarkdown(part)))
-    .join('');
+    .split(EMPHASIS_RE)
+    .map((part, index) => (index % 2 === 1 ? `*${escapeMarkdownCharacters(part.slice(1, -1))}*` : escapeMarkdownCharacters(part)))
+    .join('')
+    .replace(/^#/, '\\#');
 }
 
 function escapeXml(value) {

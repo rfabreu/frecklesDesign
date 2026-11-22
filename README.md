@@ -61,6 +61,8 @@ public/
 
 **Edit `caption`, never `alt`.** `alt` is derived from `caption`, `dimensions` and `sold`, so a hand-edited `alt` is overwritten by `npm run generate` and fails the staleness check until it is regenerated.
 
+Text rules enforced by the validator: string fields must be single-line with no leading or trailing whitespace, and `imageUrl` may not contain spaces or any of ``< > | ` "``. In `llms.txt` / `llms-full.txt`, `title` and `description` are Markdown-escaped (``\ ` * _ [ ] < |``), so write plain text there; the one exception is balanced `*emphasis*` in `description` (e.g. `(*andorinha*)`), which is kept.
+
 `npm run generate` (`scripts/generate-artwork-files.js`, plain Node) validates `artworks.json` and regenerates from it:
 
 - the `alt` field of each entry in `src/data/artworks.json`
