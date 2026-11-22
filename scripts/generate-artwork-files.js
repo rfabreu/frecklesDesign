@@ -29,7 +29,7 @@ const MEDIA = {
   'Acrylic Painting': { technique: 'Acrylic technique', artMedium: 'Acrylic on Canvas' },
 };
 
-const DIMENSIONS_RE = /^(\d+)in x (\d+)in$/;
+const DIMENSIONS_RE = /^([1-9]\d*)in x ([1-9]\d*)in$/;
 
 // Returns { width, height } as digit strings, in inches. Throws on anything that is not "<w>in x <h>in".
 function parseDimensions(dimensions) {
@@ -68,7 +68,7 @@ function validate(artworks) {
     FIELDS.filter(key => key !== 'sold' && key !== 'alt').forEach(key => {
       if (typeof art[key] !== 'string' || art[key].trim() === '') {
         errors.push(`${where}: "${key}" must be a non-empty string`);
-      } else if (/[\r\n]/.test(art[key])) {
+      } else if (/[\r\n\u2028\u2029]/.test(art[key])) {
         errors.push(`${where}: "${key}" must be a single line`);
       } else if (art[key] !== art[key].trim()) {
         errors.push(`${where}: "${key}" must not have leading or trailing whitespace`);
@@ -94,8 +94,8 @@ function validate(artworks) {
     if (typeof art.imageUrl === 'string' && !art.imageUrl.startsWith('https://')) {
       errors.push(`${where}: "imageUrl" must start with https://`);
     }
-    if (typeof art.imageUrl === 'string' && /[\s<>|`"]/.test(art.imageUrl)) {
-      errors.push(`${where}: "imageUrl" must not contain spaces or any of < > | \` "`);
+    if (typeof art.imageUrl === 'string' && /[\s\\<>|`"]/.test(art.imageUrl)) {
+      errors.push(`${where}: "imageUrl" must not contain spaces or any of \\ < > | \` "`);
     }
   });
   return errors;
@@ -119,9 +119,9 @@ function escapeMarkdownCharacters(value) {
 
 // Like escapeMarkdown, but keeps balanced single-asterisk emphasis, e.g. "the swallow (*andorinha*)".
 // Descriptions are written with this inline Markdown on purpose. An emphasis span is `*text*` with no space
-// inside its asterisks and no letter, digit or "*" touching them from outside; any other "*" (stray, doubled,
+// inside its asterisks and no letter, digit, "*" or "\" touching them from outside; any other "*" (stray, doubled,
 // intraword like 2*3) is escaped.
-const EMPHASIS_RE = /((?<![\p{L}\p{N}_*])\*(?=\S)[^*]+?(?<=\S)\*(?![\p{L}\p{N}_*]))/u;
+const EMPHASIS_RE = /((?<![\p{L}\p{N}_*\\])\*(?=\S)[^*]+?(?<=\S)\*(?![\p{L}\p{N}_*]))/u;
 
 function escapeMarkdownKeepingEmphasis(value) {
   return value
